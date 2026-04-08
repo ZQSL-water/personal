@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>张清水澜 | 个人主页</title>
+    <!-- 使用Google Fonts提升字体美观度 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (免费图标库) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f8fe;  /* 柔和蓝色背景基调 */
+            font-family: 'Inter', sans-serif;
+            color: #1e2a3e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* 优雅背景纹理 (浅蓝色调) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(#cbdff2 1px, transparent 1px);
+            background-size: 32px 32px;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 2rem 4rem;
+        }
+
+        /* 卡片与模块 */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(2px);
+            border-radius: 2.5rem;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(144, 186, 228, 0.5);
+        }
+
+        .hero-info {
+            flex: 2;
+        }
+
+        .hero-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #1f4a7c;   /* 深蓝色主色 */
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-tag {
+            font-size: 1rem;
+            color: #2c6288;
+            font-weight: 500;
+            border-left: 3px solid #4d8fc5;
+            padding-left: 0.8rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            max-width: 500px;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .meta-chip {
+            background: #e9f0f9;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #1f5e8e;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-avatar {
+            flex: 1;
+            min-width: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .avatar-circle {
+            background: linear-gradient(135deg, #c5e0fa, #a2c8f0);
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 25px rgba(37, 99, 128, 0.15);
+            border: 4px solid white;
+        }
+
+        .avatar-initials {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            font-weight: 500;
+            color: #1f4a7c;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        /* 网格布局 */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.75rem;
+            padding: 1.6rem 1.8rem;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s ease;
+            border: 1px solid #dde7f0;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -12px rgba(0, 80, 120, 0.12);
+            border-color: #b9d3f0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            color: #1f4a7c;
+            border-left: 4px solid #4d8fc5;
+            padding-left: 1rem;
+            letter-spacing: -0.2px;
+        }
+
+        .role-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .role-icon {
+            width: 32px;
+            color: #3c7fb0;
+            font-size: 1.3rem;
+            margin-top: 0.1rem;
+        }
+
+        .role-text h3 {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+            color: #1e3a5f;
+        }
+
+        .role-text p {
+            color: #4a627a;
+            font-size: 0.9rem;
+        }
+
+        .hobby-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .hobby-badge {
+            background: #eef4fc;
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            color: #1f6392;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #cfe0ef;
+            color: #5f7f9e;
+            font-size: 0.85rem;
+        }
+
+        i.fa, i.far, i.fas {
+            margin-right: 4px;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 1.2rem;
+            }
+            .hero {
+                padding: 1.5rem;
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .hero-tag {
+                border-left: none;
+                text-align: center;
+                padding-left: 0;
+            }
+            .hero-meta {
+                justify-content: center;
+            }
+            .hero-name {
+                font-size: 2.4rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* 装饰 */
+        .quote-marathon {
+            font-style: italic;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            color: #4f7ea3;
+        }
+        .simple-note {
+            background: #eef4fc;
+            border-radius: 1rem;
+            padding: 0.6rem 1rem;
+            color: #2c6288;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Hero 头部区域 -->
+    <div class="hero">
+        <div class="hero-info">
+            <div class="hero-name">张清水澜</div>
+            <div class="hero-tag">四川外国语大学 · 中国语言文化学院 · 汉语国际教育2023级</div>
+            <div class="hero-desc">
+                笃行致远，弦歌不辍。以语言为桥，以文化为舟，奔赴山海之约。
+            </div>
+            <div class="hero-meta">
+                <span class="meta-chip"><i class="fas fa-university"></i> 川外·中院</span>
+                <span class="meta-chip"><i class="fas fa-calendar-alt"></i> 2023级</span>
+                <span class="meta-chip"><i class="fas fa-globe"></i> 汉语国际教育</span>
+            </div>
+        </div>
+        <div class="hero-avatar">
+            <div class="avatar-circle">
+                <div class="avatar-initials">张<br>清</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 双栏布局：左：学生干部经历 + 右：兴趣爱好（跑步/钢琴/书法）完全无任何荣誉奖项模块 -->
+    <div class="grid-2col">
+        <!-- 左侧：学生工作·担当 -->
+        <div class="card">
+            <div class="section-title">
+                <i class="fas fa-users" style="margin-right: 8px; font-size: 1.3rem;"></i> 学生工作 · 担当
+            </div>
+            <div class="role-item">
+                <div class="role-icon"><i class="fas fa-gavel"></i></div>
+                <div class="role-text">
+                    <h3>中国语言文化学院学生会主席</h3>
+                    <p>统筹学院品牌活动，服务师生，搭建中外文化交流平台，组织大型校园文化节与学术讲座。</p>
+                </div>
+            </div>
+            <div class="role-item">
+                <div class="role-icon"><i class="fas fa-pen-fancy"></i></div>
+                <div class="role-text">
+                    <h3>2023级汉语国际教育3班 宣传委员</h3>
+                    <p>负责班级文化宣传、新媒体运营及活动纪实，展现班级风采，凝聚班级力量。</p>
+                </div>
+            </div>
+            <div class="simple-note">
+                <i class="fas fa-quote-left" style="color:#3c7fb0; margin-right: 6px;"></i> 在服务中成长，在奉献中闪光，做有温度的中文人。
+            </div>
+        </div>
+
+        <!-- 右侧：热爱·精进（只展示爱好跑步、钢琴、书法，无任何荣誉内容） -->
+        <div class="card">
+            <div class="section-title">
+                <i class="fas fa-heart" style="margin-right: 6px;"></i> 热爱 · 精进
+            </div>
+            <div>
+                <div style="margin-bottom: 1rem;">
+                    <h3 style="font-weight: 600; margin-bottom: 0.8rem; font-size: 1.1rem; color:#1f4a7c;"><i class="fas fa-futbol"></i> 三项挚爱</h3>
+                    <div class="hobby-list">
+                        <span class="hobby-badge"><i class="fas fa-running"></i> 跑步</span>
+                        <span class="hobby-badge"><i class="fas fa-music"></i> 钢琴</span>
+                        <span class="hobby-badge"><i class="fas fa-paintbrush"></i> 书法</span>
+                    </div>
+                    <p style="margin-top: 0.7rem; font-size: 0.9rem; color: #54738f;">
+                        用奔跑感受生命的律动，用琴声传递内心的情感，用笔墨书写文化的沉淀。
+                    </p>
+                </div>
+                <!-- 简单陈述爱好相关经历，但绝不提及奖项荣誉 -->
+                <div style="margin-top: 1rem;">
+                    <div style="display: flex; gap: 0.8rem; margin-bottom: 1rem; align-items: flex-start;">
+                        <i class="fas fa-route" style="color:#3c7fb0; margin-top: 0.2rem;"></i>
+                        <span>长期坚持长跑锻炼，积极参与校内外跑步活动，享受奔跑带来的自律与突破。</span>
+                    </div>
+                    <div style="display: flex; gap: 0.8rem; margin-bottom: 1rem; align-items: flex-start;">
+                        <i class="fas fa-piano" style="color:#3c7fb0; margin-top: 0.2rem;"></i>
+                        <span>钢琴爱好者，在音乐中寻找宁静与力量，多次参与学院文艺演出与合唱伴奏。</span>
+                    </div>
+                    <div style="display: flex; gap: 0.8rem; align-items: flex-start;">
+                        <i class="fas fa-brush" style="color:#3c7fb0; margin-top: 0.2rem;"></i>
+                        <span>书法研习多年，擅长隶书与行楷，积极参与传统文化交流活动，以笔会友。</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第二层：专业介绍 + 个人愿景（无任何荣誉/奖项模块，侧重专业和校园角色） -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 0.5rem;">
+        <!-- 汉语国际教育·行者 专业模块 -->
+        <div class="card">
+            <div class="section-title" style="font-size: 1.4rem;">
+                <i class="fas fa-chalkboard-user"></i> 汉语国际教育 · 行者
+            </div>
+            <p style="margin-bottom: 1rem; color: #2e4a6b;">
+                就读于四川外国语大学中国语言文化学院，系统学习现代汉语、对外汉语教学、跨文化交际等课程。
+                立志成为一名优秀的国际中文教育者，让世界听见中国的声音，感受汉字之美。
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <span style="background: #e6f0fa; border-radius: 40px; padding: 0.2rem 0.8rem; font-size: 0.75rem; color:#1f6392;"><i class="fas fa-language"></i> 普通话二甲</span>
+                <span style="background: #e6f0fa; border-radius: 40px; padding: 0.2rem 0.8rem; font-size: 0.75rem; color:#1f6392;"><i class="fas fa-book"></i> 中华才艺(书法/民乐)</span>
+                <span style="background: #e6f0fa; border-radius: 40px; padding: 0.2rem 0.8rem; font-size: 0.75rem; color:#1f6392;"><i class="fas fa-hand-peace"></i> 跨文化传播</span>
+            </div>
+        </div>
+
+        <!-- 个人角色与信念模块（无奖项荣誉，聚焦学生工作与爱好带来的成长） -->
+        <div class="card">
+            <div class="section-title" style="font-size: 1.4rem;">
+                <i class="fas fa-leaf"></i> 成长 · 信念
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <p style="margin-bottom: 1rem;">作为学院学生会主席和班级宣传委员，积极组织校园文化活动，用心服务同学；坚持跑步、钢琴、书法三项爱好，平衡学业与生活，追求多元发展。</p>
+                <p>相信热爱可抵岁月漫长，在跨文化交流的道路上不断积淀，努力成为一名有情怀、有能力的汉语国际教育人。</p>
+            </div>
+            <div class="quote-marathon" style="background:#ecf3fa; padding: 0.6rem 1rem; border-radius: 1rem; margin-top: 0.5rem;">
+                <i class="fas fa-feather-alt"></i> 动静相宜，文艺体全面发展，用热爱点亮大学生活。
+            </div>
+        </div>
+    </div>
+
+    <!-- 心之所向 / 座右铭栏，无任何荣誉提及 -->
+    <div class="card" style="margin-top: 2rem; background: #F6FAFF;">
+        <div class="section-title" style="margin-bottom: 0.5rem;">
+            <i class="fas fa-star-of-life"></i> 心之所向
+        </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+            <div style="font-weight: 500; font-size: 1.1rem; color: #1f4a7c;">“志合者，不以山海为远；文脉相通，天涯比邻。”</div>
+            <div style="font-size: 0.85rem; background: white; padding: 0.3rem 1rem; border-radius: 60px; color:#1f6392;">
+                <i class="fas fa-envelope"></i> 张清水澜 · 川外中院
+            </div>
+        </div>
+        <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-start;">
+            <span><i class="fas fa-map-marker-alt"></i> 中国 · 重庆 | 四川外国语大学</span>
+            <span><i class="fas fa-calendar-week"></i> 2023级汉语国际教育专业</span>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>? 2025 张清水澜 — 笃学敬业，弘毅致远 | 四川外国语大学中国语言文化学院</p>
+        <p style="margin-top: 5px;"><i class="fas fa-heart" style="color:#4d8fc5;"></i> 奔跑 · 弹奏 · 书写 · 传播中华文化之美</p>
+    </div>
+</div>
+</body>
+</html>
